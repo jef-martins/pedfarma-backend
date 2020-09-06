@@ -171,7 +171,7 @@ Route::group(['prefix' => 'venda_item'], function(){
 
     Route::get('/venda_itens', 'Venda_itensController@list');
 
-    Route::get('/venda_itens/{venda_id}/{produto_id}', 'Venda_itensController@select');
+    Route::get('/venda_itens/{venda_id}', 'Venda_itensController@select');
 
     Route::put('/venda_itens/{venda_id}/{produto_id}', 'Venda_itensController@update');
 

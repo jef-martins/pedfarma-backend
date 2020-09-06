@@ -26,7 +26,7 @@ class VendasController extends Controller
 
             $venda->save();
 
-            return response($request);
+            return response($venda);
 
         }catch(Exception $erro){
             return  response(['Status'=>'erro', 'details'=>$erro]);
@@ -34,7 +34,7 @@ class VendasController extends Controller
     }
 
     public function list(){
-        $venda = Venda::all();
+        $venda = Venda::with('cliente')->get();
 
         if(!empty($venda))
             return response($venda);
@@ -43,7 +43,7 @@ class VendasController extends Controller
     }
 
     public function select ($id){
-        $venda = Venda::find($id);
+        $venda = Venda::where('id', $id)->with('cliente')->first();
 
         if(!empty($venda))
             return response($venda);

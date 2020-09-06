@@ -43,8 +43,8 @@ class Venda_itensController extends Controller
         return response(['retorno'=>'Lista vazia']);
     }
 
-    public function select ($venda_id, $produto_id){
-        $venda_itens = Venda_item::where('venda_id', $venda_id)->where('produto_id', $produto_id)->get()->first();
+    public function select($venda_id){
+        $venda_itens = Venda_item::where('venda_id', $venda_id)->with('produto')->get();
 
         if(!empty($venda_itens))
             return response($venda_itens);
